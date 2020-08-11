@@ -1,0 +1,96 @@
+import com.invest.proinvest.buildsrc.Dependencies
+
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+    id("org.jetbrains.kotlin.kapt")
+    id("androidx.navigation.safeargs.kotlin")
+}
+
+apply from: "$rootProject.projectDir/android_defaults.gradle"
+
+android {
+    defaultConfig.applicationId("com.invest.proinvest")
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api(Dependencies.Kotlin.stdlib)
+    api(Dependencies.AndroidX.appcompat)
+    api(Dependencies.AndroidX.core_ktx)
+    api(Dependencies.AndroidX.constraintLayout)
+    api(Dependencies.AndroidX.legacy)
+
+    // -- Retrofit2
+    api(Dependencies.Retrofit.retrofit)
+    api(Dependencies.Retrofit.converter)
+    api(Dependencies.Retrofit.moshi_converter)
+
+    // -- Lifecycle Components (ViewModel, LiveData and ReactiveStreams)
+    api(Dependencies.AndroidX.Lifecycle.common)
+    api(Dependencies.AndroidX.Lifecycle.livedata)
+    api(Dependencies.AndroidX.Lifecycle.runtime)
+    api(Dependencies.AndroidX.Lifecycle.viewmodel)
+
+    // -- Room DB
+    api(Dependencies.RoomDB.room_runtime)
+    kapt Dependencies.RoomDB.room_compiler
+
+    // -- Coroutines
+    api(Dependencies.Kotlin.Coroutines.core)
+    api(Dependencies.Kotlin.Coroutines.android)
+
+    // RecyclerView
+    api(Dependencies.AndroidX.Recycler.recyclerView)
+
+    // Google Material
+    api(Dependencies.Material.google_material)
+
+    //glide
+    api(Dependencies.Glide.glide)
+    kapt Dependencies.Glide.compiler
+
+    api(Dependencies.FlowBinding)
+
+    api(Dependencies.Koin.core)
+    api(Dependencies.Koin.android_core)
+    api(Dependencies.Koin.viewmodel)
+
+    api(Dependencies.Kotlin.Coroutines.core)
+    api(Dependencies.Kotlin.Coroutines.android)
+
+    api(Dependencies.Moshi.core)
+    kapt Dependencies.Moshi.kotlin_codegen
+
+    // Kotlin
+    api(Dependencies.AndroidX.Navigation.fragment)
+    api(Dependencies.AndroidX.Navigation.ui)
+
+    // Dynamic Feature Module Support
+    api(Dependencies.AndroidX.Navigation.dynamic_features_fragment)
+
+    api(Dependencies.FlowBinding)
+
+    // Testing Navigation
+    androidTestImplementation Dependencies.AndroidX.Navigation.test
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'org.jsoup:jsoup:1.12.1'
+
+    // Volley
+    implementation "com.android.volley:volley:$volley_version"
+
+    implementation "joda-time:joda-time:$joda_version"
+
+    // (Recommended) Add Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+
+    // Add dependency
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+
+    api(Dependencies.cicView)
+
+    api(Dependencies.iconics)
+}
